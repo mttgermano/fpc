@@ -25,11 +25,10 @@ class Buffer {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            int value = data.remove(0);
-            System.out.println("Removed: " + value + " | Buffer size: " + data.size());
-            notifyAll();
-            return value;
         }
-        return -1;
+        int value = data.remove(0);
+        System.out.println("Removed: " + value + " | Buffer size: " + data.size());
+        notifyAll();
+        return value;
     }
 }
