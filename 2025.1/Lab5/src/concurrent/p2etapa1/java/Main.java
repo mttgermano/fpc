@@ -29,11 +29,19 @@ public class Main {
         }
 
         for (int i = 0; i < numProducers; i++) {
-            producersT.get(i).join();
+            try {
+                producersT.get(i).join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
 
         for (int i = 0; i < numConsumers; i++) {
-            consumersT.get(i).join();
+            try {
+                consumersT.get(i).join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
 
 
